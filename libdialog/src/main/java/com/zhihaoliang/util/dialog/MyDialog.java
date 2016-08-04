@@ -8,15 +8,13 @@ import android.view.WindowManager;
 import android.widget.TextView;
 
 
-
-
 import java.util.List;
 
 /**
  * Created by haoliangzhi on 2015/9/10.
  */
 
-public class MyDialog extends Dialog  {
+public class MyDialog extends Dialog {
     private DialogListener mDialogListener;
 
     private byte mState;
@@ -24,17 +22,17 @@ public class MyDialog extends Dialog  {
     public MyDialog(Context paramContext, DialogListener dialogListener, byte state, String content, boolean cancelable) {
         super(paramContext, R.style.Theme_Light_FullScreenDialogAct);
         super.setContentView(R.layout.common_dialog_generic);
-        init(paramContext,dialogListener, state, content, cancelable);
+        init(paramContext, dialogListener, state, content, cancelable);
     }
 
     public MyDialog(Context paramContext, DialogListener dialogListener, byte state, int contentId, boolean cancelable) {
         super(paramContext, R.style.Theme_Light_FullScreenDialogAct);
         super.setContentView(R.layout.common_dialog_generic);
         String content = paramContext.getResources().getString(contentId);
-        init(paramContext,dialogListener, state, content, cancelable);
+        init(paramContext, dialogListener, state, content, cancelable);
     }
 
-    private void init(Context paramContext,DialogListener dialogListener, byte state, String content, boolean cancelable) {
+    private void init(Context paramContext, DialogListener dialogListener, byte state, String content, boolean cancelable) {
         WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
 
         localLayoutParams.width = -1;
@@ -45,12 +43,14 @@ public class MyDialog extends Dialog  {
             findViewById(R.id.dilaog_cancel).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    dismiss();
                     mDialogListener.onCancle(mState);
                 }
             });
             findViewById(R.id.dilaog_confirm).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    dismiss();
                     mDialogListener.onConfrim(mState);
                 }
             });
@@ -59,7 +59,7 @@ public class MyDialog extends Dialog  {
         mDialogListener = dialogListener;
         ((TextView) findViewById(R.id.dialog_tv_message)).setText(content);
         setCancelable(cancelable);
-        if(!isBackground(paramContext)){
+        if (!isBackground(paramContext)) {
             show();
         }
     }
@@ -72,8 +72,8 @@ public class MyDialog extends Dialog  {
 
     }
 
-    public  boolean isBackground(Context context) {
-        if(context == null){
+    public boolean isBackground(Context context) {
+        if (context == null) {
             return true;
         }
         ActivityManager activityManager = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
@@ -82,7 +82,7 @@ public class MyDialog extends Dialog  {
             if (appProcess.processName.equals(context.getPackageName())) {
                 if (appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_BACKGROUND) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             }

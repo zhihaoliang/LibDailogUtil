@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ZUIDialog.iml" filepath="$PROJECT_DIR$/ZUIDialog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LibDailogUtil.iml" filepath="$PROJECT_DIR$/LibDailogUtil.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/libdialog/libdialog.iml" filepath="$PROJECT_DIR$/libdialog/libdialog.iml" />
     </modules>
