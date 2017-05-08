@@ -21,4 +21,10 @@
         android:layout_height="wrap_content"
         android:onClick="onOne"
         android:text="onOne"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onDowload"
+        android:text="DownLoad"/>
 </LinearLayout>
