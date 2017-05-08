@@ -20,19 +20,27 @@ public class MyDialog extends Dialog {
     private byte mState;
 
     public MyDialog(Context paramContext, DialogListener dialogListener, byte state, String content, boolean cancelable) {
-        super(paramContext, R.style.Theme_Light_FullScreenDialogAct);
-        super.setContentView(R.layout.common_dialog_generic);
-        init(paramContext, dialogListener, state, content, cancelable);
+        this(paramContext,dialogListener,state,content,cancelable,false);
     }
 
     public MyDialog(Context paramContext, DialogListener dialogListener, byte state, int contentId, boolean cancelable) {
+        this(paramContext,dialogListener,state,contentId,cancelable,false);
+    }
+
+    public MyDialog(Context paramContext, DialogListener dialogListener, byte state, String content, boolean cancelable,boolean isOne) {
+        super(paramContext, R.style.Theme_Light_FullScreenDialogAct);
+        super.setContentView(R.layout.common_dialog_generic);
+        init(paramContext, dialogListener, state, content, cancelable,isOne);
+    }
+
+    public MyDialog(Context paramContext, DialogListener dialogListener, byte state, int contentId, boolean cancelable ,boolean isOne) {
         super(paramContext, R.style.Theme_Light_FullScreenDialogAct);
         super.setContentView(R.layout.common_dialog_generic);
         String content = paramContext.getResources().getString(contentId);
-        init(paramContext, dialogListener, state, content, cancelable);
+        init(paramContext, dialogListener, state, content, cancelable,isOne);
     }
 
-    private void init(Context paramContext, DialogListener dialogListener, byte state, String content, boolean cancelable) {
+    private void init(Context paramContext, DialogListener dialogListener, byte state, String content, boolean cancelable,boolean isOne) {
         WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
 
         localLayoutParams.width = -1;
@@ -40,13 +48,19 @@ public class MyDialog extends Dialog {
         getWindow().setAttributes(localLayoutParams);
 
         if (dialogListener != null) {
-            findViewById(R.id.dilaog_cancel).setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dismiss();
-                    mDialogListener.onCancle(mState);
-                }
-            });
+            if(isOne){
+                findViewById(R.id.dilaog_cancel).setVisibility(View.GONE);
+                findViewById(R.id.button_select).setVisibility(View.GONE);
+            }else{
+                findViewById(R.id.dilaog_cancel).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dismiss();
+                        mDialogListener.onCancle(mState);
+                    }
+                });
+            }
+
             findViewById(R.id.dilaog_confirm).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

@@ -85,11 +85,11 @@
                 android:text="@string/cancel" />
 
             <View
-                android:id="@+id/button_select0"
+                android:id="@+id/button_select"
                 android:layout_width="1sp"
                 android:layout_height="fill_parent"
                 android:background="@color/devideline_listview"
-                android:visibility="gone" />
+                 />
 
             <Button
                 android:id="@+id/dilaog_confirm"
