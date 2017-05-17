@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="left"
                     android:soundEffectsEnabled="true"
-                    android:text="@string/prompt"
+                    android:text="@string/dialog_prompt"
                     android:textColor="@color/text_content"
                     android:textSize="17.0sp" />
             </LinearLayout>
