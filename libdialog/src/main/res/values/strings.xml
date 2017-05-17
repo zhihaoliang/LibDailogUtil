@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">LibDialog</string>
-    <string name="prompt">提示</string>
+    <string name="dialog_prompt">提示</string>
+    <string name="dialog_content">内容</string>
+    <string name="dialog_cancle">取消</string>
+    <string name="dialog_confrim">确认</string>
 </resources>
