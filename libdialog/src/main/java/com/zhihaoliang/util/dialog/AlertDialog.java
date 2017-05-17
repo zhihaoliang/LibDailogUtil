@@ -90,6 +90,10 @@ public class AlertDialog {
         }
         return this;
     }
+    public AlertDialog setMsg(int msgId) {
+        String msg = msgId >0 ?context.getResources().getString(msgId) : null;
+        return setMsg(msg);
+    }
 
     public AlertDialog setCancelable(boolean cancel) {
         dialog.setCancelable(cancel);
