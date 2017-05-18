@@ -81,6 +81,11 @@ public class AlertDialog {
         return this;
     }
 
+    public AlertDialog setCanceledOnTouchOutside(boolean cancel) {
+        dialog.setCanceledOnTouchOutside(cancel);
+        return this;
+    }
+
     public AlertDialog setMsg(String msg) {
         showMsg = true;
         if (TextUtils.isEmpty(msg)) {
@@ -111,11 +116,21 @@ public class AlertDialog {
         btn_pos.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(v);
+                if(listener != null){
+                    listener.onClick(v);
+                }
                 dialog.dismiss();
             }
         });
         return this;
+    }
+
+    public AlertDialog setPositiveButton(int textId){
+        return setPositiveButton(textId,null);
+    }
+
+    public AlertDialog setPositiveButton(String text){
+        return setPositiveButton(text,null);
     }
 
     public AlertDialog setPositiveButton(int textId,
@@ -124,6 +139,13 @@ public class AlertDialog {
         return setPositiveButton(text, listener);
     }
 
+    public AlertDialog setNegativeButton(String text){
+        return setNegativeButton(text,null);
+    }
+
+    public AlertDialog setNegativeButton(int textId){
+        return setNegativeButton(textId,null);
+    }
     public AlertDialog setNegativeButton(String text,
                                          final OnClickListener listener) {
         showNegBtn = true;
@@ -135,7 +157,9 @@ public class AlertDialog {
         btn_neg.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                listener.onClick(v);
+                if(listener != null){
+                    listener.onClick(v);
+                }
                 dialog.dismiss();
             }
         });
