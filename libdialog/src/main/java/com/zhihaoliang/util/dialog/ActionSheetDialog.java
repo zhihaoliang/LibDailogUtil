@@ -8,6 +8,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.LinearLayout;
@@ -153,7 +154,8 @@ public class ActionSheetDialog {
 			float scale = context.getResources().getDisplayMetrics().density;
 			int height = (int) (45 * scale + 0.5f);
 			textView.setLayoutParams(new LayoutParams(
-					LayoutParams.MATCH_PARENT, height));
+					LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+			textView.setMinHeight(height);
 
 			textView.setOnClickListener(new OnClickListener() {
 				@Override
